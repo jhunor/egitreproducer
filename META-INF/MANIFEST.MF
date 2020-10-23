@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Thegit
+Bundle-SymbolicName: thegit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.apache.felix.scr,
+ org.eclipse.equinox.event,
+ org.eclipse.egit.ui;bundle-version="5.8.0",
+ org.eclipse.egit.core;bundle-version="5.8.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Import-Package: javax.inject
+Automatic-Module-Name: thegit
