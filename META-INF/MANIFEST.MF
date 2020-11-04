@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Thegit
+Bundle-Activator: thegit.EgitActivator
 Bundle-SymbolicName: thegit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.core.runtime,
@@ -9,7 +10,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.equinox.event,
  org.eclipse.egit.ui;bundle-version="5.8.0",
  org.eclipse.egit.core;bundle-version="5.8.0",
- org.eclipse.core.resources;bundle-version="3.13.800"
+ org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Import-Package: javax.inject
+Import-Package: javax.inject,
+ org.eclipse.ui.navigator
 Automatic-Module-Name: thegit

@@ -27,6 +27,12 @@
             id="thegit.view"
             inject="true">
       </view>
+      <view
+            class="thegit.Stammdaten"
+            id="ch.sbb.lta.client.stammdaten.zellen.view.Stammdaten"
+            name="Stammdaten"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
@@ -54,7 +60,7 @@
                visible="true">
          </view>
          <view
-               id="org.eclipse.egit.ui.CompareTreeView"
+               id="ch.sbb.lta.client.stammdaten.zellen.view.Stammdaten"
                minimized="false"
                relationship="stack"
                relative="org.eclipse.egit.ui.RepositoriesView"
@@ -78,6 +84,31 @@
                style="push">
          </command>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="thegit.StammdatenContentProvider"
+            id="ch.sbb.lta.client.stammdaten.zellen.StammdatenContent"
+            name="Stammdatencontent">
+         <triggerPoints>
+            <instanceof
+                  value="thegit.StammdatenNavigatorInput">
+            </instanceof>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="ch.sbb.lta.client.stammdaten.zellen.view.Stammdaten">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="ch.sbb.lta.client.stammdaten.zellen.StammdatenContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
    </extension>
 
 </plugin>
