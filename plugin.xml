@@ -90,7 +90,8 @@
       <navigatorContent
             contentProvider="thegit.StammdatenContentProvider"
             id="ch.sbb.lta.client.stammdaten.zellen.StammdatenContent"
-            name="Stammdatencontent">
+            labelProvider="org.eclipse.ui.model.WorkbenchLabelProvider"
+            name="StammdatenContent">
          <triggerPoints>
             <instanceof
                   value="thegit.StammdatenNavigatorInput">
@@ -110,5 +111,53 @@
          </includes>
       </viewerContentBinding>
    </extension>
-
+ <extension
+          point="org.eclipse.core.runtime.adapters">
+       <factory
+             adaptableType="org.eclipse.core.resources.IResource"
+             class="thegit.StammdatenFileAdapter">
+          <adapter
+                type="org.eclipse.ui.model.IWorkbenchAdapter">
+          </adapter>
+       </factory>
+    </extension>
+    
+    <extension
+          point="org.eclipse.core.expressions.definitions">
+       <definition
+             id="ch.sbb.lta.client.stammdaten.zellen.generieren">
+          <with
+                variable="activeContexts">
+             <iterate
+                   ifEmpty="false"
+                   operator="or">
+                <equals
+                      value="ch.sbb.lta.client.stammdaten.zellen.context">
+                </equals>
+             </iterate>
+          </with>
+       </definition>
+    </extension>
+    <extension
+          point="org.eclipse.ui.contexts">
+       <context
+             id="ch.sbb.lta.client.stammdaten.zellen.context"
+             name="Stammdaten"
+             parentId="org.eclipse.ui.contexts.window">
+       </context>
+    </extension>
+    
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:ch.sbb.lta.client.stammdaten.zellen.view.Stammdaten">
+         <command
+               commandId="org.eclipse.ui.file.refresh"
+               label="refresh"
+               style="push"
+               tooltip="REFRESH">
+         </command>
+      </menuContribution>
+      </extension>
 </plugin>
